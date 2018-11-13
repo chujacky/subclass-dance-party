@@ -4,7 +4,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = $('<span class="dancer"><img src="https://media.giphy.com/media/oFRFn0BCUgoWypkMSy/giphy.gif"></span>');
 
   
   this.step();
@@ -16,16 +16,15 @@ var Dancer = function(top, left, timeBetweenSteps) {
 
 Dancer.prototype.step = function() {
   
-  // the basic dancer doesn't do anything interesting at all on each step,
+  // the basic dancer doesn't do anything interesting at all on each step,<img class="full" src="http://faalconn.com/wp-content/uploads/ch/chic-new-doge-memes-arrived-liquified.jpg" width="918" alt="Doge Meme Shoes: Chic New Doge Memes Arrived Liquified">
   // it just schedules the next step
-  console.log(this.top);
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left) {
 // Use css top and left properties to position our <span> tag
 // where it belongs on the page. See http://api.jquery.com/css/
-//
+  console.log("inside")
   var styleSettings = {
     top: top,
     left: left
