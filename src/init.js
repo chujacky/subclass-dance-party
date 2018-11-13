@@ -23,19 +23,29 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     if (dancerMakerFunctionName === 'LineDancer') {
+      console.log("hi");
       var dancer = new dancerMakerFunction(0, 0, 500);
+      window.dancers.push(dancer);
+      
     } else if (dancerMakerFunctionName === 'ResizeDancer') {
       
       var dancer = new dancerMakerFunction($('body').height() / 2, $('body').width() / 2, 500);
-      
+      window.dancers.push(dancer);
     } else {
-      console.log('incorrect');
       var dancer = new dancerMakerFunction(
         $("body").height() * Math.random(),
         $("body").width() * Math.random(),
-        Math.random() * 2000
+        Math.random() * 1000
       ); 
+      window.dancers.push(dancer);
     }
+    
+    $('.lineUpButton').on('click', function(event) {
+      for (var i =0;i<window.dancers.length; i++) {
+        window.dancers[i].lineUp();
+        window.dancers[i].counter = 1;
+      }
+    });
     
     $('body').append(dancer.$node);
   });
