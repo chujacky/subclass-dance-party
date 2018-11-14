@@ -29,11 +29,18 @@ body, a:link, a:visited, a:active{
   
 }
 img {
-    width:150px;
+  width:150px;
+  
+}
+
+.resizeDancers {
+  width:150px;
+  transform: rotate(-40deg);
 }
 
 .sizing{
   width:300px;
+  transform: rotate(40deg);
   
 }
 

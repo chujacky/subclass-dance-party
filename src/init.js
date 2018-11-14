@@ -1,6 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
-
+  window.blinky = [];
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -29,7 +29,7 @@ $(document).ready(function() {
       
     } else if (dancerMakerFunctionName === 'ResizeDancer') {
       
-      var dancer = new dancerMakerFunction($('body').height() / 2, $('body').width() / 2, 500);
+      var dancer = new dancerMakerFunction($('body').height() / 2, $('body').width() / 2, 800);
       window.dancers.push(dancer);
     } else {
       var dancer = new dancerMakerFunction(
@@ -38,16 +38,35 @@ $(document).ready(function() {
         Math.random() * 1000
       ); 
       window.dancers.push(dancer);
+      window.blinky.push([dancer.left, dancer.top]);
     }
-    
-    $('.lineUpButton').on('click', function(event) {
-      for (var i =0;i<window.dancers.length; i++) {
-        window.dancers[i].lineUp();
-        window.dancers[i].counter = 1;
-      }
-    });
-    
     $('body').append(dancer.$node);
   });
+  var lineUp = function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      console.log('hello')
+      window.dancers[i].lineUp();
+      window.dancers[i].counter = 1;
+    }
+  };
+    
+  var returnNormal = function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].counter = 0;
+      window.dancers[i].step();
+      this.timeBetweenSteps = 800;
+    }
+  };
+  
+  
+
+    
+  $('.lineUpButton').on('click', lineUp);
+  $('.returnNormalButton').off('click', lineUp);
+    
+  $('.returnNormalButton').on('click', returnNormal);
+  $('.lineUpButton').off('click', returnNormal);
+
+  
 });
 

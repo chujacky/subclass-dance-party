@@ -5,7 +5,8 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.$node.html('<span class="dancer"><img src="https://66.media.tumblr.com/622731495fca4c32b5c519f67ac8741a/tumblr_otel24WU2S1vyni53o1_500.gif"></span>');
+  this.$node.html('<span class="dancer"><img class ="blinkyDancer" src="https://media.giphy.com/media/GulHgUpJxdTbO/giphy.gif"></span>');
+  
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);

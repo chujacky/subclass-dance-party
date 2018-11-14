@@ -1,6 +1,7 @@
 // Creates and returns a new dancer object that can step
 var Dancer = function(top, left, timeBetweenSteps) {
   this.counter = 0;
+  this.resizeDancerNo = 0;
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
@@ -34,9 +35,13 @@ Dancer.prototype.setPosition = function(top, left) {
 };
 
 Dancer.prototype.lineUp = function() {
-  var index = window.dancers.indexOf(this);
-  this.top = $("body").height() / 2;
-  this.left = index * 200 + 100;
   
-  this.setPosition(this.top, this.left);
-}
+  if (this.counter === 1) {
+    console.log('uiyiyiy');
+    console.log(this)
+    var index = window.dancers.indexOf(this);
+    this.top = $("body").height() / 2;
+    this.left = index * 100 + 100;
+    this.setPosition(this.top, this.left);
+  }
+};
